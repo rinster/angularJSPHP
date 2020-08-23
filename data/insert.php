@@ -15,7 +15,7 @@
       }  
       else  
       {  
-           echo 'Error';  
+           echo 'Error in inserting record';  
       }  
  }  
  ?>  
