@@ -28,7 +28,8 @@
                 <label>Last Name</label>  
                 <input type="text" name="last_name" ng-model="lastname" class="form-control" />  
                 <br />  
-                <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>  
+                <input type="hidden" ng-model="id"/>
+                <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="{{btnName}}"/>  
         
                 <!-- User Display Table-->
                 <br /><br />  
@@ -36,10 +37,12 @@
                     <tr>  
                         <th>First Name</th>  
                         <th>Last Name</th>  
+                        <th>Action</th>
                     </tr>  
                     <tr ng-repeat="x in names">  
                         <td>{{x.first_name}}</td>  
-                        <td>{{x.last_name}}</td>  
+                        <td>{{x.last_name}}</td>
+                        <td><button ng-click="updateData(x.id, x.first_name, x.last_name)" class="btn btn-info btn-xs">Update</button></td>  
                     </tr>  
                 </table>
 
