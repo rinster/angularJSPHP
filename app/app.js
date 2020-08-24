@@ -53,4 +53,20 @@ app.controller("usercontroller", function($scope, $http){
         $scope.lastname = last_name;
         $scope.btnName = "Update"; //On click updateData, change btnName to "Update"
     }
+
+    // Delete
+    $scope.deleteData = function(id){
+        if(confirm("Are you sure you want to delete this data?"))
+        {
+            $http.post("data/delete.php", {'id':id})
+            .then(function(data){
+                alert(data.data);
+                $scope.displayData();
+            });
+        }
+        else
+        {
+            return false;
+        }
+    }
 });  

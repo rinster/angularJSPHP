@@ -42,7 +42,11 @@
                     <tr ng-repeat="x in names">  
                         <td>{{x.first_name}}</td>  
                         <td>{{x.last_name}}</td>
-                        <td><button ng-click="updateData(x.id, x.first_name, x.last_name)" class="btn btn-info btn-xs">Update</button></td>  
+                        <td>
+                            <!-- Action Buttons -->
+                            <button ng-click="updateData(x.id, x.first_name, x.last_name)" class="btn btn-info btn-xs">Update</button>
+                            <button ng-click="deleteData(x.id )"class="btn btn-danger btn-xs">Delete</button>
+                        </td>  
                     </tr>  
                 </table>
 
