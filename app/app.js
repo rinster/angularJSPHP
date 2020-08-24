@@ -3,7 +3,7 @@ var app = angular.module("myapp",[]);
 // User Controller
 app.controller("usercontroller", function($scope, $http){ 
     
-    //Button names
+    //Button names - on page load, set btn name to ADD
     $scope.btnName = "Add";
 
     //Create
@@ -24,11 +24,15 @@ app.controller("usercontroller", function($scope, $http){
                 'lastname':$scope.lastname, 
                 'btnName':$scope.btnName, 
                 'id':$scope.id}   
-            ).then(function(data){  
-                alert(data.data);  
-                $scope.firstname = null;  
-                $scope.lastname = null;  
+            ).finally(function(){  
+                //alert(data.data); 
+                //console.log(data); 
+                $scope.firstname = null;  //set input to blank
+                $scope.lastname = null;  // set input to blank
+                $scope.btnName = "Add"; // reset btnName to Add
                 $scope.displayData();
+            }).catch(function(error){
+                return error;
             }); 
          } 
      }  
@@ -47,6 +51,6 @@ app.controller("usercontroller", function($scope, $http){
         $scope.id = id;
         $scope.firstname = first_name;
         $scope.lastname = last_name;
-        $scope.btnName = "Update";
+        $scope.btnName = "Update"; //On click updateData, change btnName to "Update"
     }
 });  
