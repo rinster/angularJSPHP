@@ -6,6 +6,10 @@ app.config(function($routeProvider){
     .when('/',{
         templateUrl: 'views/userList.html',
         controller: 'usercontroller'
+    })
+    .when('/addImage', {
+        templateUrl: 'views/fileUpload.html',
+        controller: 'fileUploader'
     });
 });
 
@@ -80,3 +84,8 @@ app.controller("usercontroller", function($scope, $http){
         }
     }
 });  
+
+// File upload Controller
+app.controller("fileUploader", function($scope, $http){
+
+});
