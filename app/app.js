@@ -1,4 +1,14 @@
-var app = angular.module("myapp",[]);  
+var app = angular.module("myapp",['ngRoute']);  
+
+//Config routes
+app.config(function($routeProvider){
+    $routeProvider
+    .when('/',{
+        templateUrl: 'views/userList.html',
+        controller: 'usercontroller'
+    });
+});
+
 
 // User Controller
 app.controller("usercontroller", function($scope, $http){ 
