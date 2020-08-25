@@ -86,6 +86,37 @@ app.controller("usercontroller", function($scope, $http){
 });  
 
 // File upload Controller
-app.controller("fileUploader", function($scope, $http){
-
-});
+app.directive("fileInput", function($parse){  
+    return{  
+         link: function($scope, element, attrs){  
+              element.on("change", function(event){  
+                   var files = event.target.files;  
+                   //console.log(files[0].name);  
+                   $parse(attrs.fileInput).assign($scope, element[0].files);  
+                   $scope.$apply();  
+              });  
+         }  
+    }  
+});  
+app.controller("fileUploader", function($scope, $http){  
+    $scope.uploadFile = function(){  
+         var form_data = new FormData();  
+         angular.forEach($scope.files, function(file){  
+              form_data.append('file', file);  
+         });  
+         $http.post('upload.php', form_data,  
+         {  
+              transformRequest: angular.identity,  
+              headers: {'Content-Type': undefined,'Process-Data': false}  
+         }).success(function(response){  
+              alert(response);  
+              $scope.select();  
+         });  
+    }  
+    $scope.select = function(){  
+         $http.get("select.php")  
+         .success(function(data){  
+              $scope.images = data;  
+         });  
+    }  
+}); 

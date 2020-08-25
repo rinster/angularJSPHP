@@ -2,6 +2,8 @@
 <h3 align="center">File Upload Using AngularJS with PHP Script</h3><br />  
 <br />  
 <div class="container" ng-controller="fileUploader" ng-init="select()">  
+
+    <!-- Image Upload Form -->
      <div class="col-md-4">  
           <input type="file" file-input="files" />  
      </div>  
@@ -10,6 +12,8 @@
      </div>  
      <div style="clear:both"></div>  
      <br /><br />  
+
+     <!-- Image Display Grid -->
      <div class="col-md-3" ng-repeat="image in images">  
           <img ng-src="upload/{{image.name}}" width="200" height="200" style="padding:16px; border:1px solid #f1f1f1; margin:16px;" />  
      </div>  
